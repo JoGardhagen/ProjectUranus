@@ -1,3 +1,3 @@
-#Project Uranus
+# Project Uranus
 ##
-##HobbyProject javaFX 3D Planet
+## HobbyProject javaFX 3D Planet

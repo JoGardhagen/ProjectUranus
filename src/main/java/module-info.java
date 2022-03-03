@@ -1,4 +1,4 @@
-module com.example.uranusproject {
+module com.gardhagen.joakim.uranusproject {
     requires javafx.controls;
     requires javafx.fxml;
 

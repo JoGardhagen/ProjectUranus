@@ -1,4 +1,4 @@
-package com.example.uranusproject;
+package com.gardhagen.joakim.uranusproject;
 
 
 import javafx.scene.Group;

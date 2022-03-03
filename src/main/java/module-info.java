@@ -3,6 +3,6 @@ module com.example.uranusproject {
     requires javafx.fxml;
 
 
-    opens com.example.uranusproject to javafx.fxml;
-    exports com.example.uranusproject;
+    opens com.gardhagen.joakim.uranusproject to javafx.fxml;
+    exports com.gardhagen.joakim.uranusproject;
 }

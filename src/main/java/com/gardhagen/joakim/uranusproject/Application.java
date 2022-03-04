@@ -5,13 +5,16 @@ import javafx.scene.Camera;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Application extends javafx.application.Application {
 
@@ -21,23 +24,14 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        PhongMaterial material = new PhongMaterial();
-        material.setDiffuseColor(Color.DARKRED);
-
-        Sphere sphere = new Sphere(100);
-        sphere.setMaterial(material);
-
         Group group = new Group();
-        group.getChildren().add(sphere);
+        group.getChildren().add(uranus());
 
         Camera camera = new PerspectiveCamera(true);
 
         Scene scene = new Scene(group, WIDHT, HIGHT);
-        scene.setFill(Color.STEELBLUE);
+        scene.setFill(Color.BLACK);
         scene.setCamera(camera);
-
-    /*    sphere.translateXProperty().set(WIDHT/2);
-        sphere.translateYProperty().set(HIGHT/2);*/
 
         camera.translateXProperty().set(0);
         camera.translateYProperty().set(0);
@@ -58,11 +52,27 @@ public class Application extends javafx.application.Application {
             }
         });
 
-
-
         stage.setTitle("UranusPrjoect");
         stage.setScene(scene);
         stage.show();
+    }
+    private Sphere uranus(){
+        PhongMaterial material = new PhongMaterial();
+
+        try {
+            // JavaFX dont find filepaths so u need (new javafx.scene.image.Image(file.toURI().toURL().toExternalForm()))
+            // i dont really understand it yet why but its working now :)
+            File file = new File("Texture.jpg");
+            material.setDiffuseMap(new javafx.scene.image.Image(file.toURI().toURL().toExternalForm()));
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+
+        Sphere sphere = new Sphere(100);
+        sphere.setMaterial(material);
+
+        return sphere;
     }
 
     public static void main(String[] args) {

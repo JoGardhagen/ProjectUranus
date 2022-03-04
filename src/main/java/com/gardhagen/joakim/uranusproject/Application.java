@@ -24,26 +24,35 @@ public class Application extends javafx.application.Application {
         Group group = new Group();
         group.getChildren().add(sphere);
 
-        Camera camera = new PerspectiveCamera();
+        Camera camera = new PerspectiveCamera(true);
 
         Scene scene = new Scene(group, WIDHT, HIGHT);
         scene.setFill(Color.STEELBLUE);
         scene.setCamera(camera);
 
+    /*    sphere.translateXProperty().set(WIDHT/2);
+        sphere.translateYProperty().set(HIGHT/2);*/
+
+        camera.translateXProperty().set(0);
+        camera.translateYProperty().set(0);
+        camera.translateZProperty().set(-500);
+
+        camera.setNearClip(1);
+        camera.setNearClip(7000);
+
         stage.addEventHandler(KeyEvent.KEY_PRESSED, event ->{
             switch (event.getCode())
             {
                 case W:
-                    sphere.translateZProperty().set(sphere.getTranslateZ()+10);
+                    camera.translateZProperty().set(camera.getTranslateZ()+10);
                     break;
                 case S:
-                    sphere.translateZProperty().set(sphere.getTranslateZ()-10);
+                    camera.translateZProperty().set(camera.getTranslateZ()-10);
                     break;
             }
         });
 
-        sphere.translateXProperty().set(WIDHT/2);
-        sphere.translateYProperty().set(HIGHT/2);
+
 
         stage.setTitle("UranusPrjoect");
         stage.setScene(scene);

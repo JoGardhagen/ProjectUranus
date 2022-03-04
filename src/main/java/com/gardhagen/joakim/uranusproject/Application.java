@@ -7,6 +7,7 @@ import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import javafx.stage.Stage;
 
@@ -19,7 +20,12 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
+        PhongMaterial material = new PhongMaterial();
+        material.setDiffuseColor(Color.DARKRED);
+
         Sphere sphere = new Sphere(100);
+        sphere.setMaterial(material);
 
         Group group = new Group();
         group.getChildren().add(sphere);

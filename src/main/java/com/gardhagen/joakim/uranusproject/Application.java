@@ -19,6 +19,7 @@ public class Application extends javafx.application.Application {
     private static final int WIDHT = 1000;
     private static final int HIGHT = 500;
     private final PointLight pointLight = new PointLight();
+    private Sphere uranus = new Sphere(100);
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -61,12 +62,26 @@ public class Application extends javafx.application.Application {
             @Override
             public void handle(long now) {
                 pointLight.setRotate(pointLight.getRotate()+1);
+
             }
         };
         timer.start();
+        prepareAnimation();
+
 
 
     }
+
+    private void prepareAnimation() {
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                uranus.rotateProperty().set(uranus.getRotate() +0.5);
+            }
+        };
+        timer.start();
+    }
+
     private Node[] prepareLightSource() {
         //Create point light
         pointLight.setColor(Color.TOMATO);
@@ -97,11 +112,13 @@ public class Application extends javafx.application.Application {
         }
 
 
-        Sphere sphere = new Sphere(100);
-        sphere.setMaterial(material);
+       /* Sphere uranus = new Sphere(100);*/
+
+        uranus.setRotationAxis(Rotate.Y_AXIS);
+        uranus.setMaterial(material);
 
 
-        return sphere;
+        return uranus;
     }
 
     public static void main(String[] args) {

@@ -84,7 +84,7 @@ public class Application extends javafx.application.Application {
 
     private Node[] prepareLightSource() {
         //Create point light
-        pointLight.setColor(Color.TOMATO);
+        pointLight.setColor(Color.DARKBLUE);
         pointLight.getTransforms().add(new Translate(0, -100, 100));
         //Set axis of rotation
         pointLight.setRotationAxis(Rotate.X_AXIS);
@@ -95,6 +95,7 @@ public class Application extends javafx.application.Application {
         sphere.getTransforms().setAll(pointLight.getTransforms());
         sphere.rotateProperty().bind(pointLight.rotateProperty());
         sphere.rotationAxisProperty().bind(pointLight.rotationAxisProperty());
+
 
         //Return lights
         return new Node[]{pointLight, sphere};
